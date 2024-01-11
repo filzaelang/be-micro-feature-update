@@ -8,15 +8,9 @@ export default new class PartaiController {
         try {
             const data = {
                 name: req.body.name,
-<<<<<<< HEAD
                 chairman: req.body.chairman,
                 visionAndMission: req.body.visionAndMission,
                 address: req.body.address,
-=======
-                ketuaUmum: req.body.ketuaUmum,
-                visiMisi: req.body.visiMisi,
-                alamat: req.body.alamat,
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
                 image: res.locals.filename
             }
 
@@ -28,15 +22,9 @@ export default new class PartaiController {
 
             const obj = {
                 name: value.name,
-<<<<<<< HEAD
                 chairman: value.chairman,
                 visionAndMission: value.visionAndMission,
                 address: value.address,
-=======
-                ketuaUmum: value.ketuaUmum,
-                visiMisi: value.visiMisi,
-                alamat: value.alamat,
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
                 image: cloudinaryRes.secure_url
             }
 
@@ -52,7 +40,6 @@ export default new class PartaiController {
         }
     }
 
-<<<<<<< HEAD
     async update(req: Request, res: Response) {
         try {
             const id = parseInt(req.params.id, 10);
@@ -94,8 +81,6 @@ export default new class PartaiController {
         }
     }
 
-=======
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
     async getAll(req: Request, res: Response) {
         try {
             const response = await PartaiServices.getAll();
@@ -131,68 +116,4 @@ export default new class PartaiController {
                 .json({ message: "Internal server error", error: error.message })
         }
     }
-
-<<<<<<< HEAD
 }
-
-// async delete(req: Request, res: Response) {
-//     try {
-//         const id = parseInt(req.params.id, 10);
-//         const response = await PartaiServices.delete(id);
-
-//         if (typeof response === "string") {
-//             return res.status(404).json({ message: response });
-//         }
-
-//         return res.status(200).json(response);
-//     } catch (error) {
-//         console.error("Error deleting the partai:", error);
-//         return res
-//             .status(500)
-//             .json({ message: "Internal server error", error: error.message });
-//     }
-// }
-=======
-    async delete(req: Request, res: Response) {
-        try {
-            const id = parseInt(req.params.id, 10);
-            const response = await PartaiServices.delete(id);
-
-            if (typeof response === "string") {
-                return res.status(404).json({ message: response });
-            }
-
-            return res.status(200).json(response);
-        } catch (error) {
-            console.error("Error deleting the partai:", error);
-            return res
-                .status(500)
-                .json({ message: "Internal server error", error: error.message });
-        }
-    }
-
-    async update(req: Request, res: Response) {
-        try {
-            const id = parseInt(req.params.id, 10);
-            if (isNaN(id)) {
-                return res.status(400).json({
-                    message: "Invalid ID provided",
-                    error: "Invalid input for type number",
-                });
-            }
-            const data = req.body;
-            const response = await PartaiServices.update(id, data);
-            return res.status(201).json(response);
-        } catch (error) {
-            console.error("Error creating a Partai:", error);
-            return res
-                .status(500)
-                .json({ message: "Internal server error", error: error.message });
-        }
-    }
-
-
-
-
-}
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a

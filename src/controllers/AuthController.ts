@@ -1,17 +1,12 @@
 import { Request, Response } from "express";
 import AuthServices from "../services/AuthServices";
-<<<<<<< HEAD
 import { loginSchema, registerSchema, getOneUserValidation } from "../utils/validator/AuthValidator";
-=======
-import { loginSchema, registerSchema } from "../utils/validator/AuthValidator";
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
 
 export default new class AuthController {
     async register(req: Request, res: Response) {
         try {
             const data = {
                 fullname: req.body.fullname,
-<<<<<<< HEAD
                 address: req.body.address,
                 gender: req.body.gender,
                 username: req.body.username,
@@ -20,17 +15,6 @@ export default new class AuthController {
                 role: req.body.role
             }
 
-=======
-                alamat: req.body.alamat,
-                jenisKelamin: req.body.jenisKelamin,
-                username: req.body.username,
-                password: req.body.password,
-                age: req.body.age
-            }
-
-
-
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
             const { error, value } = registerSchema.validate(data)
             if (error) return res.status(400).json(error)
 
@@ -67,7 +51,6 @@ export default new class AuthController {
             return res.status(500).json(error)
         }
     }
-<<<<<<< HEAD
 
     async getAll(req: Request, res: Response) {
         try {
@@ -97,6 +80,4 @@ export default new class AuthController {
             return res.status(500).json(error);
         }
     }
-=======
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
 }

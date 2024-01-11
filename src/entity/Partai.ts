@@ -11,7 +11,6 @@ export class Partai {
     name: string;  // Nama Partai
 
     @Column()
-<<<<<<< HEAD
     chairman: string;
 
     @Column()                      //@Column("simple-array")
@@ -19,15 +18,6 @@ export class Partai {
 
     @Column()
     address: string;
-=======
-    ketuaUmum: string;
-
-    @Column()                      //@Column("simple-array")
-    visiMisi: string;
-
-    @Column()
-    alamat: string;
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
 
     @Column({ nullable: true })
     image: string;

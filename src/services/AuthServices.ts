@@ -16,7 +16,6 @@ export default new class AuthServices {
 
             const obj = this.AuthRepository.create({
                 fullname: data.fullname,
-<<<<<<< HEAD
                 address: data.address,
                 gender: data.gender,
                 username: data.username,
@@ -26,19 +25,6 @@ export default new class AuthServices {
             })
 
             const resRegist = await this.AuthRepository.save(obj)
-=======
-                alamat: data.alamat,
-                jenisKelamin: data.jenisKelamin,
-                username: data.username,
-                password: hashPassword,
-                age: data.age
-            })
-
-            const resRegist = await this.AuthRepository.save(obj)
-            console.log("1")
-            console.log(resRegist)
-            console.log("1")
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
 
             return {
                 message: "success creating a new user",
@@ -60,13 +46,8 @@ export default new class AuthServices {
             const obj = this.AuthRepository.create({
                 id: checkUsername.id,
                 fullname: checkUsername.fullname,
-<<<<<<< HEAD
                 gender: checkUsername.gender,
                 address: checkUsername.address,
-=======
-                jenisKelamin: checkUsername.jenisKelamin,
-                alamat: checkUsername.alamat,
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
                 age: checkUsername.age,
                 username: checkUsername.username
             })
@@ -81,7 +62,6 @@ export default new class AuthServices {
             return "something error while loggedin"
         }
     }
-<<<<<<< HEAD
 
     async getAll(): Promise<object | string> {
         try {
@@ -106,6 +86,4 @@ export default new class AuthServices {
             return "message: something error while get one user"
         }
     }
-=======
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
 }

@@ -2,10 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, Ma
 import { Artikel } from "./Artikel";
 import { Voter } from "./Voter";
 
-<<<<<<< HEAD
 export type UserRoleType = "admin" | "editor" | "ghost"
-=======
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
 @Entity({ name: "users" })
 export class User {
 
@@ -16,17 +13,10 @@ export class User {
     fullname: string;
 
     @Column()
-<<<<<<< HEAD
     address: string;
 
     @Column()
     gender: string;
-=======
-    alamat: string;
-
-    @Column()
-    jenisKelamin: string;
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
 
     @Column()
     username: string;
@@ -37,7 +27,6 @@ export class User {
     @Column()
     age: number;
 
-<<<<<<< HEAD
     @Column({
         type: "enum",
         enum: ["admin", "editor", "ghost"],
@@ -45,8 +34,6 @@ export class User {
     })
     role: UserRoleType
 
-=======
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
     @OneToOne(() => Voter, (voter) => voter.user, {
         onDelete: "CASCADE",
         onUpdate: "CASCADE"

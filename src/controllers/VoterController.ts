@@ -1,14 +1,11 @@
 import { Request, Response } from "express";
 import VoterServices from "../services/VoterServices";
-<<<<<<< HEAD
 import { createVoteValidation } from "../utils/validator/VoteValidator";
-=======
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
+
 
 export default new class VoterController {
     async create(req: Request, res: Response) {
         try {
-<<<<<<< HEAD
             const data = req.body;
             const loginSession = res.locals.loginSession;
 
@@ -27,20 +24,6 @@ export default new class VoterController {
         } catch (error) {
             console.error("Error creating a Vote:", error);
             return res.status(500).json({ message: "Internal server error", error: error.message });
-=======
-            const data = req.body
-            // const { error, value } = createVoteValidation.validate(data)
-            // if(error) return res.status(400).json(error)
-
-            const response = await VoterServices.create(data);
-
-            return res.status(201).json(response)
-        } catch (error) {
-            console.error("Error creating vote:", error)
-            return res
-                .status(500)
-                .json({ message: "internal server error", error: error.message })
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
         }
     }
 
@@ -68,8 +51,4 @@ export default new class VoterController {
                 .json({ message: "Internal server error", error: error.message })
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a

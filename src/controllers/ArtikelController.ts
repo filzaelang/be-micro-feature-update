@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import ArtikelServices from "../services/ArtikelServices";
 import { createArticleSchema } from "../utils/validator/ContentValidator";
 import cloudinary from "../libs/cloudinary";
-import { Artikel } from "../entity/Artikel";
 
 
 export default new class ArtikelController {
@@ -10,10 +9,6 @@ export default new class ArtikelController {
         try {
 
             const loginSession = res.locals.loginSession
-<<<<<<< HEAD
-=======
-            console.log(loginSession.obj)
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
 
             const data = {
                 title: req.body.title,
@@ -53,7 +48,6 @@ export default new class ArtikelController {
         }
     }
 
-<<<<<<< HEAD
     async update(req: Request, res: Response) {
         try {
             const id = parseInt(req.params.id, 10);
@@ -92,8 +86,6 @@ export default new class ArtikelController {
         }
     }
 
-=======
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
     async getAll(req: Request, res: Response) {
         try {
             const response = await ArtikelServices.getAll();
@@ -129,133 +121,4 @@ export default new class ArtikelController {
                 .json({ message: "Internal server error", error: error.message })
         }
     }
-
-<<<<<<< HEAD
-=======
-    async delete(req: Request, res: Response) {
-        try {
-            const id = parseInt(req.params.id, 10);
-            const response = await ArtikelServices.delete(id);
-
-            if (typeof response === "string") {
-                return res.status(404).json({ message: response });
-            }
-
-            return res.status(200).json(response);
-        } catch (error) {
-            console.error("Error deleting article:", error);
-            return res
-                .status(500)
-                .json({ message: "Internal server error", error: error.message });
-        }
-    }
-
-    async update(req: Request, res: Response) {
-        try {
-            const id = parseInt(req.params.id, 10);
-            if (isNaN(id)) {
-                return res.status(400).json({
-                    message: "Invalid ID provided",
-                    error: "Invalid input for type number",
-                });
-            }
-            const data = req.body;
-            const response = await ArtikelServices.update(id, data);
-            return res.status(201).json(response);
-        } catch (error) {
-            console.error("Error creating a Article:", error);
-            return res
-                .status(500)
-                .json({ message: "Internal server error", error: error.message });
-        }
-    }
-
-    async getAllArticleCard(req: Request, res: Response) {
-        try {
-            const response = await ArtikelServices.getAllArticlesCard();
-            return res.status(200).json(response);
-        } catch (error) {
-            console.error("Error getting all articles:", error);
-            return res
-                .status(500)
-                .json({ message: "Internal server error", error: error.message });
-        }
-    }
-    async getOneArticleCard(req: Request, res: Response) {
-        try {
-            const id = parseInt(req.params.id, 10);
-
-            if (isNaN(id)) {
-                return res.status(400).json({
-                    message: "Invalid ID provided",
-                    error: "Invalid input for type number",
-                });
-            }
-
-            const response = await ArtikelServices.getOneArticlesCard(id);
-            return res.status(200).json(response);
-        } catch (error) {
-            console.error("Error getting a Article:", error);
-            return res.status(500).json({
-                message: "Internal server error",
-                error: error.message,
-            });
-        }
-    }
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
-
-
-
-
-<<<<<<< HEAD
-
-
-
 }
-=======
-}
-
-// async update(req: Request, res: Response) {
-//     try {
-//         const id = parseInt(req.params.id, 10);
-//         const dataToUpdate = {
-//             title: req.body.title || null,
-//             author: req.body.author || null,
-//             article: req.body.article || null,
-//             image: res.locals.filename || null,
-//             date: req.body.date
-//         };
-
-//         const response = await ArtikelServices.update(id, dataToUpdate);
-
-//         return res.status(200).json(response);
-//     } catch (error) {
-//         console.error("Error updating article:", error);
-//         return res
-//             .status(500)
-//             .json({ message: "Internal server error", error: error.message });
-//     }
-// }
-
-
-// const newTitle = req.body.newTitle;
-
-// const response = await ArtikelServices.updateTitle(id, newTitle);
-
-// async updateTitle(req: Request, res: Response) {
-//     try {
-//         const id = parseInt(req.params.id, 10);
-//         const newTitle = req.body.newTitle;
-//         const dataToUpdate = {
-//             title: req.body.newTitle
-//         }
-
-//         const response = await ArtikelServices.updateTitle(id, dataToUpdate);
-
-//         return res.status(200).json(response);
-//     } catch (error) {
-//         console.error("Error updating title:", error);
-//         return res.status(500).json({ message: "Internal server error", error: error.message });
-//     }
-// }
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
