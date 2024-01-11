@@ -34,8 +34,8 @@ router.patch('/partai/:id', AuthMiddleware.Auth, UploadFile.upload("imagePartai"
 
 //Voter
 router.post('/vote', AuthMiddleware.Auth, VoterController.create)
-router.get('/vote', VoterController.getAll)
-router.get('/vote/:id', VoterController.getOne)
+router.get('/vote', AuthMiddleware.Auth, VoterController.getAll)
+router.get('/vote/:id', AuthMiddleware.Auth, VoterController.getOne)
 
 
 //User
