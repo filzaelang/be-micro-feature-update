@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-# Awesome Project Build with TypeORM
-
-Steps to run this project:
-
-1. Run `npm i` command
-2. Setup database settings inside `data-source.ts` file
-3. Run `npm start` command
-=======
 # How to Use Pemilu Backend with Postman
 
 ## How to Use Authorization
@@ -20,169 +11,176 @@ Steps to run this project:
 
 1. Register User
 
-- **URL:** http://localhost:5000/data/auth/register
+- **URL:** http://localhost:5000/api/v1/auth/register
 - **Method:** POST
 - **JSON Body Example:**
 
   ```json
   {
-    "fullName": "Bambang Kopling",
-    "alamat": "Banyuwangi",
-    "jenisKelamin": "Laki-Laki",
-    "username": "bambang",
-    "password": "12345678"
+    "fullName": "Rian Kopling",
+    "address": "Surakarta",
+    "gender": "male",
+    "username": "rian",
+    "password": "12345678",
+    "role": "admin" (Note: there are three options admin, editor and ghost)
   }
 
-## 2. Login
+2. Login
 
-- **URL:** http://localhost:5000/data/auth/login
+- **URL:** http://localhost:5000/api/v1/auth/login
 - **Method:** POST
 - **JSON Body Example:**
 
-```json
-{
-    "username": "bambang",
+  ```json
+  {
+    "username": "rian",
     "password": "12345678"
-}
-```
+  }
+  ```
 Note: you will received token which is used to authorization
+
+3. Delete User
+
+- **URL:** http://localhost:5000/api/v1/user/:id
+- **Method:** DELETE
+
+4. Get All User
 
 ## B. Article
 
-1. Getting All Articles
+1. Getting All Articles (No Authorization)
 
-- **URL:** http://localhost:5000/data/artikel
+- **URL:** http://localhost:5000/api/v1/artikel
 - **Method:** GET
 
-2. Getting a Specific Article
+2. Getting a Specific Article (No Authorization)
 
-- **URL:** http://localhost:5000/data/artikel/:id
+- **URL:** http://localhost:5000/api/v1/artikel/:id
 - **Method:** GET
 
 3. Create an Article (Authorization Required)
 
-- **URL:** http://localhost:5000/data/artikel
+- **URL:** http://localhost:5000/api/v1/artikel
 - **Method:** POST
 - **Form-data Body Example:**
- ```
-    title                   = JKT48 ikut meramaikan pemilu
-    article                 = Di suatu hari tanpa sengaja kita bertemu
-    imageArticle            = qqqqq.jpg    (file)
-    date                    = 2022-01-01T12:34:56.789Z
-```
+  ```
+    title         = JKT48 Ikut meramaikan pemilu
+    article       = JKT48 menggelar konser di gelora bung karno
+    imageArticle  = (Note: file)
+    date          = 2023-02-13
+  ```
 4. Update an Article (Authorization Required)
 
-- **URL:** http://localhost:5000/data/artikel/:id
+- **URL:** http://localhost:5000/api/v1/artikel/:id
 - **Method:** PATCH
 - **Form-data Body Example:**
-```
-    title                   = JKT48 ikut meramaikan pemilu
-    article                 = Di suatu hari tanpa sengaja kita bertemu
-    imageArticle            = qqqqq.jpg    (file)
-    date                    = 2022-01-01T12:34:56.789Z
-```
+  ```
+    title         = JKT48 Ikut meramaikan pemilu V.20
+    article       = JKT48 menggelar konser di gelora bung karno V.20
+    imageArticle  = (Note: file)
+    date          = 2023-02-12
+  ```
 5. Delete an Article (Authorization Required)
 
-- **URL:** http://localhost:5000/data/artikel/:id
+- **URL:** http://localhost:5000/api/v1/artikel/:id
 - **Method:** DELETE
 
-# C. Voter
+## C. Voter
 
 1. Getting All Votes (Authorization Required)
 
-- **URL:** http://localhost:5000/data/votes
+- **URL:** http://localhost:5000/api/v1/vote
 - **Method:** GET
 
 2. Voting (Authorization Required)
 
-- **URL:** http://localhost:5000/data/vote
+- **URL:** http://localhost:5000/api/v1/vote
 - **Method:** POST
 - **JSON Body Example:**
 
-```json
-{
-    "no": 2
-}
-```
-# D. Paslon
+  ```json
+  {
+    "votedPaslon": 1
+  }
+  ```
+## D. Paslon
 
 1. Getting All Paslons (No Authorization)
 
-- **URL:** http://localhost:5000/data/paslon
+- **URL:** http://localhost:5000/api/v1/paslon
 - **Method:** GET
 
 2. Getting a Specific Paslon (No Authorization)
 
-- **URL:** http://localhost:5000/data/paslon:id
+- **URL:** http://localhost:5000/api/v1/paslon/:id
 - **Method:** GET
 
 3. Create a Paslon (Authorization Required)
 
-- **URL:** http://localhost:5000/data/paslon
+- **URL:** http://localhost:5000/api/v1/paslon
 - **Method:** POST
 - **Form-data Body Example:**
-```
-   name             = Kawaki
-   noUrut           = 1
-   visiMisi         = Mengusir otsusuki dari dunia shinobi
-   imagePaslon      = Kawaki.png (file)
-```
+  ```
+    name                 = Kawaki
+    no                   = 2
+    visionAndMission     = Membunuh semua otsusuki
+    imagePaslon          = (Note: file)
+  ```
 4. Update a Paslon (Authorization Required)
 
-- **URL:** http://localhost:5000/data/paslon/:id
+- **URL:** http://localhost:5000/api/v1/artikel/:id
 - **Method:** PATCH
 - **Form-data Body Example:**
-```
-    name             = Kawaki Otsusuki
-    noUrut           = update 1
-    visiMIsi         = membunuh boruto
-    picture          = KawakiGaul.png (file)
-```
+  ```
+    name               = Kawaki V2.0
+    no                 = 2 V2.0
+    visionAndMission   = Membunuh semua otsusuki V2.0
+    imagePaslon        = (Note: file)
+  ```
 5. Delete a Paslon (Authorization Required)
 
-- **URL:** http://localhost:5000/data/paslon/:id
+- **URL:** http://localhost:5000/api/v1/artikel/:id
 - **Method:** DELETE
 
-# E. Partai
+## E. Partai
 
 1. Getting All Partais (No Authorization)
 
-- **URL:** http://localhost:5000/data/partai
+- **URL:** http://localhost:5000/api/v1/partais
 - **Method:** GET
 
 2. Getting a Specific Partai (No Authorization)
 
-- **URL:** http://localhost:5000/data/partai/:id
+- **URL:** http://localhost:5000/api/v1/partai/:id
 - **Method:** GET
 
 3. Create a Partai (Authorization Required)
 
-- **URL:** http://localhost:5000/data/partai
+- **URL:** http://localhost:5000/api/v1/partai
 - **Method:** POST
 - **Form-data Body Example:**
-```
+  ```
     name             = Partai Wibu Indonesia
-    ketuaUmum        = Agus
-    visiMisi         = Meningkatkan kualitas wibu di indonesia
-    alamat           = Wonogiri
-    imagePartai      = qwerty.jpg (file)
+    chairman         = Yoga
+    visionAndMission = Meningkatkan kualitas wibu indonesia menjadi berstandard internasional
+    address          = Bandung
+    imagePartai      = (Note: file)
     paslon           = 1 (paslonId)
-```
-4. Update a Partai (Authorization Required)
+  ```
+4. Update a Partai (Authorization Required) 
 
-- **URL:** http://localhost:5000/data/partai/:id
+- **URL:** http://localhost:5000/api/v1/partai/:id
 - **Method:** PATCH
 - **Form-data Body Example:**
-```
+  ```
     name             = Partai Wibu Indonesia V2.0
-    ketuaUmum        = Agus V2.0
-    visiMisi         = Meningkatkan kualitas wibu di indonesia V2.0
-    alamat           = Wonogiri V2.0
-    imagePartai      = qwe.jpg (file)
-    paslon           = 2 (paslonId) 
-```
+    chairman         = Yoga V2.0
+    visionAndMission = Meningkatkan kualitas wibu indonesia menjadi berstandard internasional V2.0
+    address          = Tangerang V2.0
+    imagePartai      = (Note: file)
+    paslon           = 1 (paslonId)
+  ```
 5. Delete a Partai (Authorization Required)
 
-- **URL:** http://localhost:5000/data/partai/:id
+- **URL:** http://localhost:5000/api/v1/partai/:id
 - **Method:** DELETE
->>>>>>> 938615da8682dc38b070bcdff45ce80fa050a98a
